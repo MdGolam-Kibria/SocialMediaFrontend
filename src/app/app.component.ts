@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {LocalStorage} from "./service/LocalStorage";
+import {NotificationService} from "./service/notification.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'untitled';
+
+
+  constructor(private local: LocalStorage, private notification: NotificationService, private router: Router) {
+  }
+
+  signOut() {
+    if (confirm("Do you want to exit ?")) {
+      try {
+        this.local.deleteCredentials();
+        this.notification.showSuccess("SignOut", "Logout Successfully")
+        this.router.navigateByUrl('/')
+      } catch (e) {
+        this.notification.showError("Database", "Something Wrong")
+      }
+    }
+  }
 }

@@ -1,0 +1,25 @@
+<div class="container-fluid" style="height: 300px;width: 50%;margin-bottom: 200px">
+
+  <form class="form-inline">
+
+    <label for="userName" class="mr-sm-2">User Name:</label>
+    <input #userName type="text" class="form-control mb-2 mr-sm-2" required placeholder="Enter username" id="userName">
+
+    <label for="phone" class="mr-sm-2">Phone :</label>
+    <input #phone pattern="^(?:\+?88)?01[135-9]\d{8}" type="number" class="form-control mb-2 mr-sm-2" required placeholder="Enter phone" id="phone">
+
+    <label for="email" class="mr-sm-2">Email address:</label>
+    <input #email type="email" class="form-control mb-2 mr-sm-2" required placeholder="Enter email" id="email">
+
+    <label for="pwd" class="mr-sm-2">Password:</label>
+    <input #password type="password" class="form-control mb-2 mr-sm-2" required placeholder="Enter password" id="pwd">
+
+    <button type="submit" class="btn btn-primary mb-2"
+            (click)="signUpRequest(userName.value,phone.value,email.value,password.value)">Submit</button>
+
+
+
+  </form>
+
+
+</div>

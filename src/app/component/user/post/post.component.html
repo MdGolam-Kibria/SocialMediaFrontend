@@ -1,0 +1,50 @@
+<div class="container-fluid" style="height: 300px;width: 50%;margin-bottom: 200px">
+
+  <div class="top-100" *ngFor="let post of allPostResponse?.content">
+    <div class="border overflow-hidden mt-3" style="overflow-y: scroll; height:100%;">
+
+
+      <div class="row bg-info">
+        <img src="favicon.ico"
+             style="width: 60px;height: 40px; border-radius: 50%; position: relative;margin-top: 10px">
+        <div class="col">
+          <label *ngIf="post.userName!=null; else templateName ">
+            {{post.userName}}
+          </label>
+          <ng-template #templateName>
+            Anonymous User
+          </ng-template>
+          <p>{{post.location?.location}}</p>
+        </div>
+        <div class="col col-md-4 text-end ">
+          <p class="align-items-end" style="align-items: end">
+            <img src="favicon.ico"
+                 style=" cursor:pointer;width: 30px;height: 30px;border-radius: 50%; position: relative;margin-top: 10px">
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h6 style="overflow: hidden" class="justify-content-md-around">
+          {{post.post}}
+        </h6>
+      </div>
+      <div class="row  align-content-center text-center" style="background-color: #dee2e6;height: 40px">
+
+        <div class="col">
+          <button>Like</button>
+        </div>
+
+        <div class="col">
+          <button>Comment</button>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>
