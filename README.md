@@ -15,7 +15,7 @@
 
 
 
-Note :- make sure that the backend server port must be ```8082``` if face any post related issue just replaced the backend port number in this project file
+Note :- make sure that the backend server port must be ```8082``` if face any port related issue just replaced the backend port number in this project file
 
 ```
 SocialMediaFrontend\src\app\service\api-service.service.ts //replaced the port here and run again
