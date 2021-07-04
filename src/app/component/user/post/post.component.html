@@ -1,7 +1,9 @@
 <div class="container-fluid" style="height: 300px;width: 50%;margin-bottom: 200px">
 
   <div class="top-100" *ngFor="let post of allPostResponse?.content">
-    <div class="border overflow-hidden mt-3" style="overflow-y: scroll; height:100%;">
+    <div
+      *ngIf="(loginResponse?.content?.userId == post?.userId && post?.isPublic)||post?.isPublic"
+      class="border overflow-hidden mt-3" style="overflow-y: scroll; height:100%;">
 
 
       <div class="row bg-info">

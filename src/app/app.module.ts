@@ -9,10 +9,11 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
 import {ApiServiceService} from "./service/api-service.service";
-import { PostComponent } from './component/user/post/post.component';
+import {PostComponent} from './component/user/post/post.component';
 import {LocalStorage} from "./service/LocalStorage";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CreatePostComponent} from './component/user/create-post/create-post.component';
 
 /**
  * configure routes here
@@ -21,6 +22,7 @@ const routes: Routes = [
   /*For Show Book Details*/
   {path: 'signUp', component: SignUpComponent},
   {path: 'signIn', component: SigninComponent},
+  {path: 'createPost', component: CreatePostComponent},
   /*{path: 'books/:id', component: BookDetailsComponent},
   {path: 'books', component: BookListComponent},
   {path: 'search/:keyword', component: BookListComponent},
@@ -36,7 +38,8 @@ const routes: Routes = [
     UserComponent,
     SigninComponent,
     SignUpComponent,
-    PostComponent
+    PostComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,30 @@
+<div class="container-fluid" style="height: 300px;width: 50%;margin-bottom: 200px">
+  <form class="form-inline">
+    <label for="status" class="mr-sm-2">Status:</label>
+    <input #currentStatus type="text" class="form-control mb-2 mr-sm-2" style="height: 150px"
+           placeholder="What's Your Mind dear"
+           id="status">
+    <label class="mr-sm-2">Choose privacy:</label>
+    <div class="col">
+      <input type="radio" name="address" [(ngModel)]="radioData" [value]="1">
+      <label style="margin-left: 2px">Public</label>
+      <input type="radio" name="address" [(ngModel)]="radioData" [value]="0"/>
+      <label style="margin-left: 2px; margin-bottom: 10px">Private</label>
+    </div>
+
+    <div>
+      <input type="text" (keyup)="getLocationListByKey(locationKey.value)" #locationKey id="myInput"
+             placeholder="Search by location name.." title="Type in a name">
+
+      <ul id="myUL" *ngFor="let location of locationSearchResponse?.content">
+        <li value="{{location.id}}"><a (click)="selectLocation(location.location,location.id)"
+                                       href="#">{{location.location}}</a></li>
+      </ul>
+
+    </div>
+
+
+    <button (click)="submit(currentStatus.value)" type="submit" class="btn btn-primary mb-2">Submit</button>
+  </form>
+</div>
+

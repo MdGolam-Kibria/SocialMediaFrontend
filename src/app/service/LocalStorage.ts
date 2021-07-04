@@ -1,17 +1,23 @@
-export class LocalStorage {
-  private KEY: string = 'CREDENTIALS';
+import {LoginResponse} from "../component/model/LoginResponse";
+import {plainToClass} from "class-transformer";
+import {Observable} from "rxjs";
 
-  async saveCredentials(data: string) {
+export class LocalStorage {
+  KEY: string = '';
+
+
+  async saveCredentials(data: LoginResponse, message: string) {
     try {
-      localStorage.setItem(this.KEY, JSON.stringify(data))
+      debugger
+      localStorage.setItem("CREDENTIALS", JSON.stringify(data))
     } catch (e) {
     }
   }
 
-  async getCredentials() {
+  getCredentials(): LoginResponse | null {
     try {
-      const data = JSON.parse(<string>localStorage.getItem(this.KEY));
-      return data;
+      const data = JSON.parse(<string>localStorage.getItem("CREDENTIALS"));
+      return plainToClass(LoginResponse, data);
     } catch (e) {
       return null;
     }
@@ -19,7 +25,7 @@ export class LocalStorage {
 
   async deleteCredentials() {
     try {
-      localStorage.removeItem(this.KEY);
+      localStorage.removeItem("CREDENTIALS");
       return true;
     } catch (e) {
       return false;

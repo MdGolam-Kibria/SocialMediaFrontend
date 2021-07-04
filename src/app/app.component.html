@@ -10,15 +10,21 @@
 
   <ul class="navbar-nav">
 
-    <li class="nav-item">
-      <a class="nav-link" style="cursor: pointer" (click)="signOut()">SignOut</a>
+    <li class="nav-item" *ngIf="loginResponse!=null">
+      <a class="nav-link" id="signOut" style="cursor: pointer" (click)="signOut()">SignOut</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/signIn" href="#">SignIn</a>
+    <li class="nav-item" *ngIf="loginResponse==null">
+      <a class="nav-link" id="signIn" routerLink="/signIn" href="#">SignIn</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/signUp" href="#">SignUp</a>
+    <li class="nav-item" *ngIf="loginResponse==null">
+      <a class="nav-link" id="signUp" routerLink="/signUp" href="#">SignUp</a>
     </li>
+    <li class="nav-item" *ngIf="loginResponse!=null">
+      <button>
+        <a class="nav-link text-danger" routerLink="/createPost" id="post" href="#">Post</a>
+      </button>
+    </li>
+
   </ul>
 </nav>
 <br/>

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {LocalStorage} from "./service/LocalStorage";
 import {NotificationService} from "./service/notification.service";
 import {Router} from "@angular/router";
+import {LoginResponse} from "./component/model/LoginResponse";
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,11 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   title = 'untitled';
+  loginResponse: LoginResponse | null;
 
 
   constructor(private local: LocalStorage, private notification: NotificationService, private router: Router) {
+    this.loginResponse = this.local.getCredentials();
   }
 
   signOut() {
@@ -20,7 +23,8 @@ export class AppComponent {
       try {
         this.local.deleteCredentials();
         this.notification.showSuccess("SignOut", "Logout Successfully")
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/signIn')
+        window.location.reload()
       } catch (e) {
         this.notification.showError("Database", "Something Wrong")
       }
