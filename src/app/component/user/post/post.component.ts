@@ -16,6 +16,7 @@ export class PostComponent implements OnInit {
   allPostResponse: PostResponse;
   loginResponse: LoginResponse | null;
   selectedOption: string;
+  havePermission: boolean = true;
 
   constructor(
     private service: ApiServiceService,
@@ -53,18 +54,32 @@ export class PostComponent implements OnInit {
   }
 
   showDeleteDialog(postId: number) {
+
     if (confirm("Dou you want to delete")) {
 
-      this.service.deletePost(postId).subscribe(value => {
-        debugger
-        if (value.statusCode == 200 || value.statusCode < 400) {
-          this.notification.showSuccess("", value.message)
-          this.selectedOption = "";
-          document.location.reload()
-          return;
+      this.allPostResponse.content.forEach(value => {
+        if (value.id = postId) {
+          if (value.userId != this.local.getCredentials()?.content.userId) {
+            this.havePermission = false;
+            this.notification.showInfo("", "You don't have permission to delete this post")
+            return
+          }
         }
-        this.notification.showInfo("", value.message)
       })
+
+
+     if (this.havePermission){
+       this.service.deletePost(postId).subscribe(value => {
+         debugger
+         if (value.statusCode == 200 || value.statusCode < 400) {
+           this.notification.showSuccess("", value.message)
+           this.selectedOption = "";
+           document.location.reload()
+           return;
+         }
+         this.notification.showInfo("", value.message)
+       })
+     }
       return
     }
   }
