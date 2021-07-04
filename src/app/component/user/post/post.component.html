@@ -2,7 +2,7 @@
 
   <div class="top-100" *ngFor="let post of allPostResponse?.content">
     <div
-      *ngIf="(loginResponse?.content?.userId == post?.userId && post?.isPublic)||post?.isPublic"
+      *ngIf="(loginResponse?.content?.userId == post?.userId || post?.isPublic)"
       class="border overflow-hidden mt-3" style="overflow-y: scroll; height:100%;">
 
 
@@ -19,10 +19,21 @@
           <p>{{post.location?.location}}</p>
         </div>
         <div class="col col-md-4 text-end ">
-          <p class="align-items-end" style="align-items: end">
+          <!--<p class="align-items-end" style="align-items: end">
             <img src="favicon.ico"
-                 style=" cursor:pointer;width: 30px;height: 30px;border-radius: 50%; position: relative;margin-top: 10px">
-          </p>
+                 >
+          </p>-->
+
+          <div>
+            <select id="option" (change)="selectedOptions(post.id)" [(ngModel)]="selectedOption"
+                    style="background-color: aqua; cursor:pointer;width: 30px;height: 30px;border-radius: 50%; position: relative;margin-top: 10px">
+              <option>
+                <img src="favicon.ico">
+              </option>
+              <option value="1">Edit</option>
+              <option value="2">Delete</option>
+            </select>
+          </div>
         </div>
       </div>
 

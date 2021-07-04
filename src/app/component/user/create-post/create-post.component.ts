@@ -5,6 +5,8 @@ import {NotificationService} from "../../../service/notification.service";
 import {PostDto} from "../../model/PostDto";
 import {LocationResponse} from "../../model/LocationResponse";
 import {Router} from "@angular/router";
+import {LoginResponse} from "../../model/LoginResponse";
+import {LocalStorage} from "../../../service/LocalStorage";
 
 @Component({
   selector: 'app-create-post',
@@ -12,6 +14,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+  loginResponse: LoginResponse | null;
   @ViewChild('myInput') searchField: ElementRef;
   locationSearchResponse: LocationSearchResponse;
   selectedLocation: string;
@@ -20,11 +23,17 @@ export class CreatePostComponent implements OnInit {
   constructor(
     private service: ApiServiceService,
     private notification: NotificationService,
-    private route: Router
+    private route: Router,
+    private localStorage: LocalStorage
   ) {
   }
 
   ngOnInit(): void {
+    this.loginResponse = this.localStorage.getCredentials();
+    if (this.loginResponse == null) {
+      this.route.navigateByUrl("/");
+      return
+    }
   }
 
   getLocationListByKey(key: string) {

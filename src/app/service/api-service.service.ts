@@ -57,4 +57,11 @@ export class ApiServiceService {
       this.BASE_URL + "api/v1/Post/Create", postObject, {headers: this.headers})
       .pipe(map((res => res)));
   }
+
+  deletePost(postId: number): Observable<PostResponse> {
+    debugger
+    return this.httpClient.delete<PostResponse>(
+      this.BASE_URL + "api/v1/Post/Delete/" + postId, {headers: this.headers})
+      .pipe(map((res => res)));
+  }
 }

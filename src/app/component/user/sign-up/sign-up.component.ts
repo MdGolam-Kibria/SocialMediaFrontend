@@ -46,7 +46,6 @@ export class SignUpComponent implements OnInit {
       if (value.statusCode === 200 || value.statusCode < 400) {
         this.notification.showSuccess("", value.message);
         this.router.navigateByUrl("/signIn")
-        window.location.reload()
         return
       }
       this.notification.showInfo("SignUp", value.message);

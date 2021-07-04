@@ -2,10 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ApiServiceService} from "../../../service/api-service.service";
 import {PostResponse} from "../../model/PostResponse";
 import {LocalStorage} from "../../../service/LocalStorage";
-import {plainToClass} from "class-transformer";
 import {LoginResponse} from "../../model/LoginResponse";
 import {ActivatedRoute, Router} from "@angular/router";
-import {registerOutsideClick} from "ngx-bootstrap/utils";
+import {NotificationService} from "../../../service/notification.service";
 
 @Component({
   selector: 'app-post',
@@ -16,12 +15,14 @@ export class PostComponent implements OnInit {
 
   allPostResponse: PostResponse;
   loginResponse: LoginResponse | null;
+  selectedOption: string;
 
   constructor(
     private service: ApiServiceService,
     private local: LocalStorage,
     private router: Router,
-    private activeRoute:ActivatedRoute) {
+    private notification: NotificationService,
+    private activeRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -36,4 +37,35 @@ export class PostComponent implements OnInit {
 
   }
 
+  selectedOptions(postId: number) {
+    // 0 means delete 1 means edit
+    debugger
+    if (this.selectedOption == null) {
+      this.notification.showInfo("", "null")
+      return;
+    }
+
+    if (this.selectedOption == "1") {
+      this.router.navigateByUrl("/editPost")
+      return
+    }
+    this.showDeleteDialog(postId);
+  }
+
+  showDeleteDialog(postId: number) {
+    if (confirm("Dou you want to delete")) {
+
+      this.service.deletePost(postId).subscribe(value => {
+        debugger
+        if (value.statusCode == 200 || value.statusCode < 400) {
+          this.notification.showSuccess("", value.message)
+          this.selectedOption = "";
+          document.location.reload()
+          return;
+        }
+        this.notification.showInfo("", value.message)
+      })
+      return
+    }
+  }
 }

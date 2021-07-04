@@ -43,7 +43,6 @@ export class SigninComponent implements OnInit {
          * Now save data in local database
          */
         this.saveCredentialsInLocal(value);
-        this.notification.showSuccess("SignIn", value.message)
         return
       }
       this.notification.showInfo("", value.message);
@@ -54,6 +53,7 @@ export class SigninComponent implements OnInit {
     try {
 
       this.localStorage.saveCredentials(response, response.message)
+      this.notification.showSuccess("SignIn", response.message)
       this.router.navigateByUrl("/")
       window.location.reload()
     } catch (e) {

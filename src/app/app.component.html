@@ -1,6 +1,6 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="nav-link" href="#" routerLink="/books">Travel agency</a>
+  <a class="nav-link" href="#" routerLink="/">Travel agency</a>
 
   <!--  This is For cart status component-->
   <div class="ml-auto">
@@ -10,14 +10,17 @@
 
   <ul class="navbar-nav">
 
-    <li class="nav-item" *ngIf="loginResponse!=null">
-      <a class="nav-link" id="signOut" style="cursor: pointer" (click)="signOut()">SignOut</a>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/" style="cursor: pointer">Home</a>
     </li>
     <li class="nav-item" *ngIf="loginResponse==null">
       <a class="nav-link" id="signIn" routerLink="/signIn" href="#">SignIn</a>
     </li>
     <li class="nav-item" *ngIf="loginResponse==null">
       <a class="nav-link" id="signUp" routerLink="/signUp" href="#">SignUp</a>
+    </li>
+    <li class="nav-item" *ngIf="loginResponse!=null">
+      <a class="nav-link" id="signOut" style="cursor: pointer" (click)="signOut()">SignOut</a>
     </li>
     <li class="nav-item" *ngIf="loginResponse!=null">
       <button>

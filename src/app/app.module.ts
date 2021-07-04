@@ -14,6 +14,7 @@ import {LocalStorage} from "./service/LocalStorage";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CreatePostComponent} from './component/user/create-post/create-post.component';
+import { PostEditComponent } from './component/user/post-edit/post-edit.component';
 
 /**
  * configure routes here
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'signUp', component: SignUpComponent},
   {path: 'signIn', component: SigninComponent},
   {path: 'createPost', component: CreatePostComponent},
+  {path: 'editPost', component: PostEditComponent},
   /*{path: 'books/:id', component: BookDetailsComponent},
   {path: 'books', component: BookListComponent},
   {path: 'search/:keyword', component: BookListComponent},
@@ -39,7 +41,8 @@ const routes: Routes = [
     SigninComponent,
     SignUpComponent,
     PostComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,
