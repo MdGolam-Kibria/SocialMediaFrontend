@@ -58,8 +58,9 @@ export class PostComponent implements OnInit {
     if (confirm("Dou you want to delete")) {
 
       this.allPostResponse.content.forEach(value => {
-        if (value.id = postId) {
-          if (value.userId != this.local.getCredentials()?.content.userId) {
+        debugger
+        if (value.id === postId) {
+          if (value?.userId != this.local.getCredentials()?.content?.userId) {
             this.havePermission = false;
             this.notification.showInfo("", "You don't have permission to delete this post")
             return
@@ -82,5 +83,6 @@ export class PostComponent implements OnInit {
      }
       return
     }
+    this.selectedOption  = ""
   }
 }
