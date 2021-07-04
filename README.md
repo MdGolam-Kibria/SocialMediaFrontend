@@ -1,27 +1,23 @@
-# Untitled
+- Complete signin signup with Jwt.
+- Complete post creation with privacy.
+- Complete show post in time line based on privacy.
+- Complete delete post with privacy. user can delete her post.
+- Complete edit post design ... but don't complete yet.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+### Run instruction.
+- 1) clone this project.
+- 2) open the project in your favourite IDE.
+- 3) after open project hit a command ``` npm install ```
+- 4) if you face any problem delete the node module folder from this project and again hit the command ``` npm install ``
+- 5) everything ok now this project ready to run.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Note :- make sure that the backend server port must be ```8082``` if face any post related issue just replaced the backend port number in this project file
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+SocialMediaFrontend\src\app\service\api-service.service.ts //replaced the port here and run again
+```
+## Run project using command ``` ng serve``` or use CLI.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  <h1>Thank you </1>
